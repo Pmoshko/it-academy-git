@@ -1,5 +1,6 @@
-s = input("Введи цифры: ")
-if (s) == (s)[:: -1]:
-    print((s), "Это палиндром")
-else:
-    print((s), "Это не палиндром" )
+a ="abc cde def"
+a = a.replace(" ", '')
+b = set(a)
+c = "".join(b)
+print(c)
+
