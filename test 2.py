@@ -1,6 +1,10 @@
-a ="abc cde def"
-a = a.replace(" ", '')
-b = set(a)
-c = "".join(b)
-print(c)
-
+a = input()
+b = list(a)
+c = []
+for i in b:
+    if i.isupper() and :
+        c.append(i)
+    else:
+        continue
+else:
+    print(len(c))
