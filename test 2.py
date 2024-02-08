@@ -1,10 +1,6 @@
-a = input()
-b = list(a)
-c = []
-for i in b:
-    if i.isupper() and :
-        c.append(i)
-    else:
-        continue
+
+a = ord('D')
+if a in range(65, 91):
+    print("заебись")
 else:
-    print(len(c))
+    print('какая-то хуйня')
