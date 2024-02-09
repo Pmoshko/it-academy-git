@@ -1,11 +1,19 @@
-a = 1
-b = a
+a = list(range(1,101))
+b =[list(range(100))]
+c = []
+for i in a:
+    if i % 3 == 0 and i % 5 == 0 :
+        i = "FizzBuzz"
+        c.append(i)
+    elif i % 5 == 0:
+        i = "Fizz"
+        c.append(i)
+    elif i % 3 == 0:
+        i = "Buzz"
+        c.append(i)
+    else:
+        i = i
+        c.append(i)
+else:
+    print(c)
 
-n = input("Номер элемента ряда Фибоначчи: ")
-n = int(n) - 2
-
-while n > 0:
-    a, b = b, a + b
-    n -= 1
-
-print("Значение этого элемента:", b)
