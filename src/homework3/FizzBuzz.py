@@ -1,5 +1,5 @@
 def FizzBuzz(a,b):
-    x = list(range(a, b))
+    x = list(range(a, b+1))
     z = []
     for i in x:
         if i % 3 == 0 and i % 5 == 0:
@@ -17,4 +17,4 @@ def FizzBuzz(a,b):
     else:
         print(z)
 
-# FizzBuzz(100,1000)
+FizzBuzz(1,100)
