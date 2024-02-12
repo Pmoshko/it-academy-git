@@ -1,8 +1,8 @@
-y = [1, 3, 1, 4, 1, 5, 1, 3]
-pairs = []
-for i in range(len(y)):
-    for j in range(i+1, len(y)):
-        if y[i] == y[j]:
-            pairs.append((y[i], y[j]))
-pair_count = len(pairs)
-print(pairs)
+a = ['a', 1, 2, 'b', 2, 'a', 5, 9]
+b = []
+for i in a:
+    if a.count(i) == 1:
+        b.append(i)
+print(b)
+
+

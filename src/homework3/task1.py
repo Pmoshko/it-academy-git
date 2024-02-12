@@ -1,11 +1,20 @@
-a = [(i+j) for i in 'abcd' for j in 'abcd' if (i == 'a' or i == 'b') and j != 'a']
-print(a[:5:2])
+def FizzBuzz(a,b):
+    x = list(range(a, b+1))
+    z = []
+    for i in x:
+        if i % 3 == 0 and i % 5 == 0:
+            i = "FizzBuzz"
+            z.append(i)
+        elif i % 5 == 0:
+            i = "Buzz"
+            z.append(i)
+        elif i % 3 == 0:
+            i = "Fizz"
+            z.append(i)
+        else:
+            i = i
+            z.append(i)
+    else:
+        print(z)
 
-
-a = [str(i) + 'a' for i in range(1,5)]
-print(a.pop(1))
-print(a)
-
-b = a.copy()
-b.insert(1,'2a')
-print(b)
+FizzBuzz(1,100)
