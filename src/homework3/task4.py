@@ -1,7 +1,9 @@
-y = [1, 3, 1, 4, 1, 5]
-m = []
-for i in range(len(y)):
-    for j in range(i+1, len(y)):
-        if y[i] == y[j]:
-            m.append((y[i],y[j]))
-print(len(m))
+def count_pairs(*args):
+    y = [*args]
+    m = []
+    for i in range(len(y)):
+        for j in range(i+1, len(y)):
+            if y[i] == y[j]:
+                m.append((y[i],y[j]))
+    return print(len(m))
+
