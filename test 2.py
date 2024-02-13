@@ -7,8 +7,8 @@ print(list(b))
 a, b, c = 'a', int(2), 'python'
 print(c)
 
-# x = tuple('123')
-# print(len(x))
+x = [1:5]
+print(len(x))
 
 
 
