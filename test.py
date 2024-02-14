@@ -1,7 +1,19 @@
-def null_list(*args):
-    l = [*args]
-    for i in reversed(range(len(l))):
-        if l[i] == 0:
-            l.append(l.pop(i))
-    return print(l)
-null_list(1, 0, 2, 0, 4, 5, 0, 6, 0, 0, 1, 1, 2)
+# nums = [2, 7, 11, 15]
+# t = 9
+# for i in range(len(nums)):
+#     for j in range(i+1, len(nums)):
+#         if nums[i] + nums[j] == t:
+#             print([i],[j])
+
+# nums = [2, 7, 11, 15]
+# t = 9
+# for i in range(len(nums)):
+#     if nums[i] + nums[i+1] == t:
+#         print([i],[i+1])
+
+f = 123321
+d = []
+for i in range(f):
+    d.append(i)
+    print(len(d))
+

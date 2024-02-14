@@ -4,4 +4,5 @@ def null_list(*args):
         if l[i] == 0:
             l.append(l.pop(i))
     return print(l)
+
 null_list(1, 0, 2, 0, 4, 5, 0, 6, 0, 0, 1, 1, 2)
