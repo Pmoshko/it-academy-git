@@ -7,3 +7,5 @@ def unique_elements(*args):
     return print(b)
 
 unique_elements(1,4,'z',1,1,4,5,6)
+
+unique_elements(1,4,'z',1,1,4,5,6)

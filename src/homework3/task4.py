@@ -7,3 +7,4 @@ def count_pairs(*args):
                 m.append((y[i],y[j]))
     return print(len(m))
 
+count_pairs(1, 1, 2, 3, 2, 5, 5)
