@@ -4,12 +4,13 @@ class Building:
         self.wall_2 = wall_2
         self.number_of_storeys = number_of_storeys
 
-    def floor_area (self):
+    def floor_area(self):
         return print(f" Площадь здания:{self.wall_1*self.wall_2}")
 
 
 class Cars:
-    def __init__(self, length: float, width: float, power: int, volume: float, class_car: str, prise: float):
+    def __init__(self, model: str, length: float, width: float, power: int, volume: float, class_car: str, prise: float):
+        self.model = model
         self.length = length
         self.width = width
         self.power = power
@@ -20,9 +21,10 @@ class Cars:
     def parking_space_size(self):
         if isinstance(self, Cars):
             return print(f'парковочная площадь: {self.length*self.width}')
+# добавить сравнение машин по цене,  объему и мощности.
 
 
-class Staff():
+class Staff:
     number_of_staff = 0
 
     def __init__(self, surname: str, name: str, age: int, position: str):
@@ -53,22 +55,39 @@ class Staff():
     def total_object(cls):
         print(f"Total number of stuff:{cls.number_of_staff}")
 
+
 class SalesOffice(Building):
+    count_stuff = []
+
     def __init__(self, wall_1: float, wall_2: float, number_of_storeys: int, number_of_workplaces: int):
         super().__init__(wall_1, wall_2, number_of_storeys)
         self.number_of_workplaces = number_of_workplaces
 
+    def add_stuff(self, stuff):
+        self.count_stuff.append(stuff)
+
+    @staticmethod
+    def counter():
+        if len(SalesOffice.count_stuff) > 1:
+            print(f"There are {len(SalesOffice.count_stuff)} people working in the sales office")
+        elif len(SalesOffice.count_stuff) == 1:
+            print(f"There is {len(SalesOffice.count_stuff)} person working in the sales office")
+        else:
+            print("No employees in the sales office ")
 
 class ShowRoom(Building):
     def __init__(self, wall_1: float, wall_2: float, number_of_storeys: int, number_of_car_space: int):
         super().__init__(wall_1, wall_2, number_of_storeys )
         self.number_of_car_space = number_of_car_space
 
+    @staticmethod
+    def welcome():
+        print('Welcome to our showroom')
 
 
 class OrderCar(Cars):
-    def __init__(self, length: float, width: float, power: int, volume: float, class_car: str, prise: float):
-        super().__init__(length, width, power, volume, class_car, prise)
+    def __init__(self, model:str,  length: float, width: float, power: int, volume: float, class_car: str, prise: float):
+        super().__init__(model, length, width, power, volume, class_car, prise)
 
     def write_file(self):
         with open("car_file.txt", 'w+') as file:
@@ -81,6 +100,10 @@ class OrderCar(Cars):
             file.write(f" Total Prise - {self.prise}\n")
 
 
-
-
-
+p1 = Staff("Mashko", "Pavel", 33, "Boss")
+# p2 = Staff("Marchenko", "Oksana", 34, "deputy Boss")
+o1 = SalesOffice(3,2,2,3)
+o1.add_stuff(p1.surname)
+# o1.add_stuff(p2.surname)
+print(o1.count_stuff)
+SalesOffice.counter()
