@@ -21,8 +21,31 @@ class Cars:
     def parking_space_size(self):
         if isinstance(self, Cars):
             return print(f'парковочная площадь: {self.length*self.width}')
-# добавить сравнение машин по цене,  объему и мощности.
 
+    def __gt__(self, other):
+        if isinstance(other, Cars):
+            return self.volume > other.volume
+        raise ValueError("Внесите экземпляр класса 'Cars'")
+
+    def __eq__(self, other):
+        if isinstance(other, Cars):
+            return self.volume == other.volume
+        raise ValueError("Внесите экземпляр класса 'Cars'")
+
+    def __lt__(self, other):
+        if isinstance(other, Cars):
+            return self.volume < other.volume
+        raise ValueError("Внесите экземпляр класса 'Cars'")
+
+    def __le__(self, other):
+        if isinstance(other, Cars):
+            return self.volume <= other.volume or self.power <= other.power
+        raise ValueError("Внесите экземпляр класса 'Cars'")
+
+    def __ge__(self, other):
+        if isinstance(other, Cars):
+            return self.volume >= other.volume
+        raise ValueError("Внесите экземпляр класса 'Cars'")
 
 class Staff:
     number_of_staff = 0
@@ -75,14 +98,22 @@ class SalesOffice(Building):
         else:
             print("No employees in the sales office ")
 
+
 class ShowRoom(Building):
+    car_in_showroom = []
+
     def __init__(self, wall_1: float, wall_2: float, number_of_storeys: int, number_of_car_space: int):
         super().__init__(wall_1, wall_2, number_of_storeys )
         self.number_of_car_space = number_of_car_space
 
+    def add_car(self, car):
+        self.car_in_showroom.append(car)
+
     @staticmethod
     def welcome():
-        print('Welcome to our showroom')
+        print(f'Welcome to our showroom\n'
+              f'There are {len(ShowRoom.car_in_showroom)} cars in our showroom\n'
+              f'The following cars are presented in our showroom: {ShowRoom.car_in_showroom}')
 
 
 class OrderCar(Cars):
@@ -100,10 +131,17 @@ class OrderCar(Cars):
             file.write(f" Total Prise - {self.prise}\n")
 
 
-p1 = Staff("Mashko", "Pavel", 33, "Boss")
+# p1 = Staff("Mashko", "Pavel", 33, "Boss")
 # p2 = Staff("Marchenko", "Oksana", 34, "deputy Boss")
 o1 = SalesOffice(3,2,2,3)
-o1.add_stuff(p1.surname)
+# o1.add_stuff(p1.surname)
 # o1.add_stuff(p2.surname)
 print(o1.count_stuff)
 SalesOffice.counter()
+bmw = Cars('BMW X6', 3.2, 2.5, 500, 3.0, 'S',100000)
+audi = Cars('AUDI Q8', 3.2, 2.5, 400, 3.0, 'S',150000)
+s1 = ShowRoom(50.5,30.5, 1, 3)
+s1.add_car(bmw.model)
+s1.add_car(audi.model)
+ShowRoom.welcome()
+print(bmw <= audi)
