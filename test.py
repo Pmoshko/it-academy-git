@@ -1,19 +1,23 @@
-# nums = [2, 7, 11, 15]
-# t = 9
-# for i in range(len(nums)):
-#     for j in range(i+1, len(nums)):
-#         if nums[i] + nums[j] == t:
-#             print([i],[j])
+from datetime import datetime, date
 
-# nums = [2, 7, 11, 15]
-# t = 9
-# for i in range(len(nums)):
-#     if nums[i] + nums[i+1] == t:
-#         print([i],[i+1])
+class Staff():
 
-f = 123321
-d = []
-for i in range(f):
-    d.append(i)
-    print(len(d))
+    number_of_staff = 0
+    def __init__(self, surname: str, name: str, age: date, position: str):
+        self.surname = surname
+        self.name = name
+        self.age = date
+        self.position = position
+        Staff.number_of_staff = Staff.number_of_staff + 1
 
+    @classmethod
+    def total_object(cls):
+        print(f"Total number of stuff:{ cls.number_of_staff}")
+
+    @classmethod
+    def name(cls):
+        print(cls.__name__)
+
+p1 = Staff('Mashko', 'Pavel', 1990, 'boss')
+Staff.total_object()
+Staff.name()
