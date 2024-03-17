@@ -1,3 +1,8 @@
+from dataclasses import dataclass, field
+import random
+from datetime import date
+
+
 class Building:
     def __init__(self, wall_1: float, wall_2: float, number_of_storeys: int):
         self.wall_1 = wall_1
@@ -47,6 +52,7 @@ class Cars:
             return self.volume >= other.volume
         raise ValueError("Внесите экземпляр класса 'Cars'")
 
+
 class Staff:
     number_of_staff = 0
 
@@ -77,6 +83,28 @@ class Staff:
     @classmethod
     def total_object(cls):
         print(f"Total number of stuff:{cls.number_of_staff}")
+
+
+@dataclass
+class ClientData:
+    total_client = 0
+    date_now = date.today()
+    year_now = date_now.year
+
+    client_id: int = field(init=False)
+    surname: str
+    name: str
+    residential_address: str
+    date_of_birth: date
+    age: date = field(init=False)
+    number_of_phone: any = field(init=False)
+    personal_manager: any
+
+    def __post_init__(self):
+        self.number_of_phone = '+37529' + str(random.randint(1, 7000000))
+        ClientData.total_client += 1
+        self.age = ClientData.year_now - self.date_of_birth.year
+        self.client_id = ClientData.total_client
 
 
 class SalesOffice(Building):
@@ -131,8 +159,8 @@ class OrderCar(Cars):
             file.write(f" Total Prise - {self.prise}\n")
 
 
-# p1 = Staff("Mashko", "Pavel", 33, "Boss")
-# p2 = Staff("Marchenko", "Oksana", 34, "deputy Boss")
+p1 = Staff("Mashko", "Pavel", 33, "Boss")
+p2 = Staff("Marchenko", "Oksana", 34, "deputy Boss")
 o1 = SalesOffice(3,2,2,3)
 # o1.add_stuff(p1.surname)
 # o1.add_stuff(p2.surname)
@@ -144,4 +172,7 @@ s1 = ShowRoom(50.5,30.5, 1, 3)
 s1.add_car(bmw.model)
 s1.add_car(audi.model)
 ShowRoom.welcome()
-print(bmw <= audi)
+print(audi < bmw)
+
+c1 = ClientData('Pupkin', 'Arcadiy', 'Minsk', date(1989, 10, 7), p1.surname)
+print(c1)
