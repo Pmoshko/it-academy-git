@@ -51,6 +51,16 @@ class Cars:
         if isinstance(other, Cars):
             return self.volume >= other.volume
         raise ValueError("Внесите экземпляр класса 'Cars'")
+    def write_order(self):
+        with open("car_file.txt", 'w+') as file:
+            file.write(f" Order - {self.__str__()}\n")
+            file.write(f" Length - {self.length}\n")
+            file.write(f" Width - {self.width}\n")
+            file.write(f" Power - {self.power}\n")
+            file.write(f" Volume - {self.volume}\n")
+            file.write(f" Class Car - {self.class_car}\n")
+            file.write(f" Total Prise - {self.prise}\n")
+
 
 
 class Staff:
@@ -144,35 +154,5 @@ class ShowRoom(Building):
               f'The following cars are presented in our showroom: {ShowRoom.car_in_showroom}')
 
 
-class OrderCar(Cars):
-    def __init__(self, model:str,  length: float, width: float, power: int, volume: float, class_car: str, prise: float):
-        super().__init__(model, length, width, power, volume, class_car, prise)
-
-    def write_file(self):
-        with open("car_file.txt", 'w+') as file:
-            file.write(f" Order - {self.__str__()}\n")
-            file.write(f" Length - {self.length}\n")
-            file.write(f" Width - {self.width}\n")
-            file.write(f" Power - {self.power}\n")
-            file.write(f" Volume - {self.volume}\n")
-            file.write(f" Class Car - {self.class_car}\n")
-            file.write(f" Total Prise - {self.prise}\n")
 
 
-p1 = Staff("Mashko", "Pavel", 33, "Boss")
-p2 = Staff("Marchenko", "Oksana", 34, "deputy Boss")
-o1 = SalesOffice(3,2,2,3)
-# o1.add_stuff(p1.surname)
-# o1.add_stuff(p2.surname)
-print(o1.count_stuff)
-SalesOffice.counter()
-bmw = Cars('BMW X6', 3.2, 2.5, 500, 3.0, 'S',100000)
-audi = Cars('AUDI Q8', 3.2, 2.5, 400, 3.0, 'S',150000)
-s1 = ShowRoom(50.5,30.5, 1, 3)
-s1.add_car(bmw.model)
-s1.add_car(audi.model)
-ShowRoom.welcome()
-print(audi < bmw)
-
-c1 = ClientData('Pupkin', 'Arcadiy', 'Minsk', date(1989, 10, 7), p1.surname)
-print(c1)
